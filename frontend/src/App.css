@@ -1,0 +1,15 @@
+.searchWrapper{
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid black;
+  max-width: 200px;
+  max-height: 40px;
+}
+.searchIconWrapper{
+  padding: 0 10px;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

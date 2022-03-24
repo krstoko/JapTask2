@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+		<PackageReference Include="Dapper" Version="2.0.123" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Backend.Core\Normative_Calculator.Core.csproj" />
+		<ProjectReference Include="..\Backend.Database\Normative_Calculator.Database.csproj" />
+	</ItemGroup>
+
+		
+</Project>
