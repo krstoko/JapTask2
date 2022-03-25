@@ -14,7 +14,6 @@ namespace backend.Extensions
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")).UseSnakeCaseNamingConvention();
-
             });
         }
     }

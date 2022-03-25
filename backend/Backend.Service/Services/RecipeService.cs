@@ -35,9 +35,15 @@ namespace backend.Services.RecipeService
 
             if (recipeCategory == null)
             {
-                response.Success = false;
-                response.Message = "Category not found";
-                return response;
+                throw new ArgumentException("Category not found");
+            }
+            if (newRecipe.Recipe_Ingredients.Count == 0)
+            {
+                throw new ArgumentException("Recipe need at least one ingredient");
+            }
+            if (newRecipe.Recipe_Ingredients.GroupBy(x => x.Ingredient_Id).Any(x => x.Count() > 1))
+            {
+                throw new ArgumentException("Can not add same ingredient");
             }
 
             _dataContext.Recipes.Add(recipe);
