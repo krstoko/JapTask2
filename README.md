@@ -32,10 +32,9 @@ is to use our start command. We will do that by using `npm start`.
 For bakcend we need to install couple of thing:
 
 * [Visual Studio](https://visualstudio.microsoft.com/)
-* [Sql Server Managment Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
-* [Sql Server Express Version](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+* [PostgreSQL](https://www.postgresql.org/)
 
-After you install all of that you can open Visual Studio and click on `Open Project`. On right side you will see Solution explorer and click on `backend.sln`. Before we do anything in our backend first you should head to SQL Server Managment Studio you installed and connect to local database. After you do that go into Visual Studio and go into Package Manager Console. You will do that by going `View > Other Windows > Package Manager Console`. After that terminal open you need to type `Update-Database` to update you local database. After all that is finish you just need to press Start button and thats it.
+In PostgreSQL installation process, please make sure to type `password: 1234` or you can use your password but you will need to change database password in backend connection string. After you install all of that you can open Visual Studio and click on `Open Project`. On right side you will see Solution explorer and click on `Normative_Calculator.sln`.After you do that go into Visual Studio and go into Package Manager Console. You will do that by going `View > Other Windows > Package Manager Console`. After that terminal open you need to type `Update-Database` to update you local database. After all that is finish you just need to press Start button and thats it.
 
 # Application manual
 
