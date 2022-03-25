@@ -8,9 +8,9 @@ namespace Normative_Calculator.Common.Requests
 {
     public class MoreThen10Ingredients
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public float Total_Cost { get; set; }
+        public int Recipe_Id { get; set; }
+        public string Recipe_Name { get; set; }
+        public float Total_Price { get; set; }
         public int Ingredients_Number { get; set; }
     }
 }

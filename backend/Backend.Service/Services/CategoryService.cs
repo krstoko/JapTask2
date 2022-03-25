@@ -18,6 +18,7 @@ namespace backend.Services.CategoryService
 
         private readonly IMapper _mapper;
         private readonly DataContext _dataContext;
+
         public CategoryService(IMapper mapper, DataContext dataContext)
         {
             _mapper = mapper;

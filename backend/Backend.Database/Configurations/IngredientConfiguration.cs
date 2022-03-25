@@ -1,6 +1,7 @@
 ﻿using backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Normative_Calculator.Database.SeedData;
 
 namespace backend.Data.Configurations
 {
@@ -12,7 +13,7 @@ namespace backend.Data.Configurations
             builder.Property(x => x.Purchase_Price).IsRequired().HasMaxLength(30);
             builder.Property(x => x.Measure_Unit).IsRequired();
             builder.Property(x => x.Purchase_Measure_Quantity).IsRequired();
-            builder.HasData(SeedData.GetIngredient());
+            builder.HasData(IngredientData.GetIngredients());
         }
     }
 }

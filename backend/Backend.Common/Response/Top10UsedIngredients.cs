@@ -12,3 +12,5 @@ namespace Normative_Calculator.Common.Response
         public int Used_Count { get; set; }
     }
 }
+
+

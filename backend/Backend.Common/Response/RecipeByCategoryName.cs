@@ -10,7 +10,7 @@ namespace Normative_Calculator.Common.Response
     {
         public string Category_Name { get; set; }
         public string Recipe_Name { get; set; }
-        public double Total_Cost { get; set; }
+        public double Total_Price { get; set; }
 
     }
 }

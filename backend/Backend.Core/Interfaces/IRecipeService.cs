@@ -9,8 +9,7 @@ namespace backend.Services.RecipeService
 {
     public interface IRecipeService
     {
-        Task<ServiceResponse<List<GetRecipeDto>>> GetByCategory(RecipeSearch recipeSearch);
-        Task<ServiceResponse<List<GetRecipeDto>>> GetBySearch(RecipeSearch recipeSearch);
+        Task<ServiceResponse<List<GetRecipeDto>>> Get(RecipeSearch recipeSearch);
         Task<ServiceResponse<GetRecipeDto>> GetRecipe(int id);
         Task<ServiceResponse<GetRecipeDto>> AddRecipe(AddRecipeDto newRecipe);
     }

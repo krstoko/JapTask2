@@ -20,6 +20,7 @@ namespace backend.Services.RecipeService
     {
         private readonly IMapper _mapper;
         private readonly DataContext _dataContext;
+
         public RecipeService(IMapper mapper, DataContext dataContext)
         {
             _mapper = mapper;
@@ -67,45 +68,32 @@ namespace backend.Services.RecipeService
             return response;
         }
 
-        public async Task<ServiceResponse<List<GetRecipeDto>>> GetByCategory(RecipeSearch recipeSearch)
+        public async Task<ServiceResponse<List<GetRecipeDto>>> Get(RecipeSearch recipeSearch)
         {
             var response = new ServiceResponse<List<GetRecipeDto>>();
 
-            var recipes = await _dataContext.Recipes
+            var query = _dataContext.Recipes
                  .Include(r => r.Recipes_Ingredients)
-                 .ThenInclude(r => r.Ingredient)
-                 .Where(r => r.Category_Id == recipeSearch.CategoryId)
-                 .Select(r => _mapper.Map<GetRecipeDto>(r))
-                 .ToListAsync();
+                    .ThenInclude(r => r.Ingredient)
+                 .AsQueryable();
 
-
-            if (recipes.Count <= recipeSearch.Skip + recipeSearch.PageSize)
+            if (recipeSearch.CategoryId > 0)
             {
-                response.LoadMore = false;
-                response.Message = "Cant load more";
+                query = query
+                    .Where(r => r.Category_Id == recipeSearch.CategoryId);
             }
 
-            response.Data = recipes
-                .OrderBy(r => r.Price)
-                .Skip((int)recipeSearch.Skip)
-                .Take((int)recipeSearch.PageSize)
-                .ToList();
+            if (!string.IsNullOrEmpty(recipeSearch.SearchValue))
+            {
+                query = query
+                    .Where(r => r.Name.Contains(recipeSearch.SearchValue)
+                    ||
+                    r.Recipes_Ingredients.Any(ri => ri.Ingredient.Name.Contains(recipeSearch.SearchValue)));
+            }
 
-            response.TotalDataNumber = recipes.Count;
-            return response;
-        }
-
-        public async Task<ServiceResponse<List<GetRecipeDto>>> GetBySearch(RecipeSearch recipeSearch)
-        {
-            var response = new ServiceResponse<List<GetRecipeDto>>();
-            var recipes = await _dataContext.Recipes
-                .Include(r => r.Recipes_Ingredients)
-                .ThenInclude(r => r.Ingredient)
-                .Where(r => r.Category_Id == recipeSearch.CategoryId &&
-                (r.Name.Contains(recipeSearch.SearchValue) || r.Recipes_Ingredients.Any(ri => ri.Ingredient.Name.Contains(recipeSearch.SearchValue))))
+            var recipes = await query
                 .Select(r => _mapper.Map<GetRecipeDto>(r))
                 .ToListAsync();
-
 
             if (recipes.Count <= recipeSearch.Skip + recipeSearch.PageSize)
             {

@@ -64,7 +64,7 @@ namespace Normative_Calculator.Database.Migrations
                 INNER JOIN categories
                     ON categories.id = recipes.category_id
                 GROUP BY categories.name,recipes.name
-                ORDER BY SUM(calculating_price(recipe_ingredients,ingredients)) Desc;
+                ORDER BY SUM(calculating_price(recipe_ingredients,ingredients)) DESC;
             end;$$
             language plpgsql");
 
@@ -80,7 +80,9 @@ namespace Normative_Calculator.Database.Migrations
                     ON ingredients.id=recipe_ingredients.ingredient_id
                 WHERE ingredients.measure_unit=m_unit AND recipe_ingredients.recipe_measure_quantity
                 BETWEEN min_quantity AND max_quantity
-                GROUP BY ingredients.name;
+                GROUP BY ingredients.name
+                ORDER BY COUNT(recipe_ingredients.ingredient_id) DESC
+                LIMIT 10;
             end;$$
             language plpgsql");
 

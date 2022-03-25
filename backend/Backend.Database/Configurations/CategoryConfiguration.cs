@@ -1,6 +1,7 @@
 ﻿using backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Normative_Calculator.Database.SeedData;
 
 namespace backend.Data.Configurations
 {
@@ -10,7 +11,7 @@ namespace backend.Data.Configurations
         {
             builder.Property(x => x.Name).IsRequired().HasMaxLength(127);
             builder.Property(x => x.Img_Url).IsRequired().HasMaxLength(1020);
-            builder.HasData(SeedData.GetCategories());
+            builder.HasData(CategoryData.GetCategories());
 
         }
     }

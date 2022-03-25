@@ -4,6 +4,7 @@ using Dapper;
 using Microsoft.EntityFrameworkCore;
 using Normative_Calculator.Common.Requests;
 using Normative_Calculator.Common.Response;
+using Normative_Calculator.Core.Dtos.Requests;
 using Normative_Calculator.Core.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,12 @@ namespace Normative_Calculator.Service.Services
     {
 
         private readonly DbConnection _dbConnection;
+
         public StoreProcedureService(DataContext dataContext)
         {
             _dbConnection = dataContext.Database.GetDbConnection();
         }
+
         public async Task<IEnumerable<MoreThen10Ingredients>> GetRecipesWith10orMoreIngredients()
         {
             return await _dbConnection.QueryAsync<MoreThen10Ingredients>("select * from get_recipes_at_least_10_ingredients()");
@@ -32,9 +35,9 @@ namespace Normative_Calculator.Service.Services
             return await _dbConnection.QueryAsync<RecipeByCategoryName>("select * from get_recipes_by_category_name()");
         }
 
-        public async Task<IEnumerable<Top10UsedIngredients>> GetTop10UsedIngredients(MeasureUnit m_unit, int min_quantity, int max_quantity)
+        public async Task<IEnumerable<Top10UsedIngredients>> GetTop10UsedIngredients(TopTenIngredients parameters)
         {
-            return await _dbConnection.QueryAsync<Top10UsedIngredients>("select * from top_10_used_ingredients(" + ((int)m_unit) + ", " + min_quantity + "," + max_quantity + ")");
+            return await _dbConnection.QueryAsync<Top10UsedIngredients>("select * from top_10_used_ingredients(" + ((int)parameters.M_Unit) + ", " + parameters.Min_Quantity + "," + parameters.Max_Quantity + ")");
         }
     }
 }

@@ -22,26 +22,12 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByCategory([FromQuery] RecipeSearch recipeSearch)
+        public async Task<IActionResult> Get([FromQuery] RecipeSearch recipeSearch)
         {
             var result = await _recipeService
-                .GetByCategory(recipeSearch);
+                .Get(recipeSearch);
 
             if (result.Success == false)
-            {
-                return NotFound(result);
-            }
-
-            return Ok(result);
-        }
-
-        [HttpGet("search")]
-        public async Task<IActionResult> GetBySearch([FromQuery] RecipeSearch recipeSearch)
-        {
-            var result = await _recipeService
-                .GetBySearch(recipeSearch);
-
-            if (result.Data == null)
             {
                 return NotFound(result);
             }

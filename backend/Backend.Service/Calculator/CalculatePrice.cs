@@ -7,7 +7,6 @@ namespace Backend.Mapper
 
         public static double calculatingPrice(RecipesIngredients recipesIngridients)
         {
-
             int unitDifference = 0;
             if (recipesIngridients.Recipe_Measure_Unit.ToString() == "Kilogram" || recipesIngridients.Recipe_Measure_Unit.ToString() == "Liter")
             {

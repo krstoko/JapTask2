@@ -1,6 +1,7 @@
 ﻿using backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Normative_Calculator.Database.SeedData;
 
 namespace backend.Data.Configurations
 {
@@ -12,6 +13,7 @@ namespace backend.Data.Configurations
             builder.Property(x => x.Description).IsRequired().HasMaxLength(1020);
             builder.Property(x => x.Img_Url).IsRequired().HasMaxLength(1020);
             builder.Property(x => x.Category_Id).IsRequired();
+            builder.HasData(RecipeData.GetRecipes());
             builder.HasOne(r => r.Category).WithMany(c => c.Recipes).HasForeignKey(r => r.Category_Id);
         }
     }

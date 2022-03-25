@@ -1,5 +1,6 @@
 ﻿using backend.Core.Common;
 using Microsoft.AspNetCore.Mvc;
+using Normative_Calculator.Core.Dtos.Requests;
 using Normative_Calculator.Core.Interfaces;
 using System.Threading.Tasks;
 
@@ -29,9 +30,9 @@ namespace Normative_Calculator.Api.Controllers
         }
 
         [HttpGet("procedure/3")]
-        public async Task<IActionResult> GetTop10UsedIngredients(MeasureUnit measure_unit, int min_quantity, int max_quantity)
+        public async Task<IActionResult> GetTop10UsedIngredients([FromQuery] TopTenIngredients parameters)
         {
-            return Ok(await _storedProcedureService.GetTop10UsedIngredients(measure_unit, min_quantity, max_quantity));
+            return Ok(await _storedProcedureService.GetTop10UsedIngredients(parameters));
         }
     }
 

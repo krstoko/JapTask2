@@ -15,7 +15,6 @@ namespace Normative_Calculator.Service.Test
     [TestFixture]
     public class CalculatorTest
     {
-        //ingredient cost
         [Test]
         public void CalculateIngredientCost()
         {
@@ -78,6 +77,7 @@ namespace Normative_Calculator.Service.Test
             Assert.AreEqual(3.5, realPrice);
         }
 
+
         [Test]
         public void CalculateIngredientCostCaseThree()
         {
@@ -109,10 +109,6 @@ namespace Normative_Calculator.Service.Test
             Assert.AreEqual(7.5, realPrice);
         }
 
-
-
-
-        //recipe cost
         [Test]
         [TestCase(1.5, 1.2, ExpectedResult = 2.7)]
         [TestCase(2, 1, ExpectedResult = 3)]
@@ -127,13 +123,13 @@ namespace Normative_Calculator.Service.Test
                 Recipes_Ingredients = new List<GetRecipeIngredientsDto>()
                 {
                      new GetRecipeIngredientsDto
-                        {
+                     {
                             Real_Ingredient_Price = ingredientPrice1
-                        },
+                     },
                      new GetRecipeIngredientsDto
-                        {
+                     {
                             Real_Ingredient_Price = ingredientPrice2
-                        }
+                     }
                 }
             };
 

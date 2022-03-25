@@ -1,11 +1,13 @@
-﻿using backend.Core.Common;
-using backend.Models;
+﻿using backend.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace backend.Data
+namespace Normative_Calculator.Database.SeedData
 {
-    public class SeedData
+    public class CategoryData
     {
         public static List<Category> GetCategories()
         {
@@ -31,20 +33,6 @@ namespace backend.Data
                 new Category { Id = 18, Name = "Lunch", Img_Url = "https://img.taste.com.au/sv9d9AM6/w720-h480-cfill-q80/taste/2016/11/pork-and-bean-burrito-bowl-109208-1.jpeg", Created_Date = new DateTime(2000, 3, 1, 7, 47, 0) }
             };
             return categories;
-        }
-
-        public static List<Ingredient> GetIngredient()
-        {
-            var ingredients = new List<Ingredient>()
-            {
-                new Ingredient { Id = 1, Name = "Ulje", Measure_Unit = MeasureUnit.Liter, Purchase_Measure_Quantity = 1, Purchase_Price = 1.5, Lowest_Measure_Unit_Price = 0.0015 },
-                new Ingredient { Id = 2, Name = "Mlijeko", Measure_Unit = MeasureUnit.Liter, Purchase_Measure_Quantity = 1, Purchase_Price = 0.8, Lowest_Measure_Unit_Price = 0.0008 },
-                new Ingredient { Id = 3, Name = "Voda", Measure_Unit = MeasureUnit.Liter, Purchase_Measure_Quantity = 1, Purchase_Price = 1, Lowest_Measure_Unit_Price = 0.0010 },
-                new Ingredient { Id = 4, Name = "Brasno", Measure_Unit = MeasureUnit.Kilogram, Purchase_Measure_Quantity = 1, Purchase_Price = 2, Lowest_Measure_Unit_Price = 0.0020 },
-                new Ingredient { Id = 5, Name = "Mljeveno meso", Measure_Unit = MeasureUnit.Kilogram, Purchase_Measure_Quantity = 1, Purchase_Price = 3, Lowest_Measure_Unit_Price = 0.0030 },
-                new Ingredient { Id = 6, Name = "Tjestenina", Measure_Unit = MeasureUnit.Kilogram, Purchase_Measure_Quantity = 1, Purchase_Price = 2.3, Lowest_Measure_Unit_Price = 0.0023 }
-        };
-            return ingredients;
         }
     }
 }

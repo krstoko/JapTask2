@@ -13,6 +13,7 @@ using backend.Services.RecipeService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Moq;
+using Normative_Calculator.Database.SeedData;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace Normative_Calculator.Service.Test
         public void SetUp()
         {
             _options = new DbContextOptionsBuilder<DataContext>()
-                   .UseInMemoryDatabase(databaseName: "JapTask5").Options;
+                   .UseInMemoryDatabase(databaseName: "JapTask2").Options;
 
             _context = new DataContext(_options);
             _context.Database.EnsureDeleted();
@@ -50,7 +51,6 @@ namespace Normative_Calculator.Service.Test
             _recipeService = new RecipeService(mapperConfiguration.CreateMapper(), _context);
             SetUpDatabase();
         }
-
 
         [Test]
         public void AddRecipe_WithNoIngredients_ThrowException()
@@ -209,16 +209,16 @@ namespace Normative_Calculator.Service.Test
 
             var loadMoreRequest = new RecipeSearch { CategoryId = 2, PageSize = p_size, Skip = 0 };
 
-            var result = await _recipeService.GetByCategory(loadMoreRequest);
+            var result = await _recipeService.Get(loadMoreRequest);
             Assert.That(result.Data.Count, Is.EqualTo(p_size));
         }
 
-
         public void SetUpDatabase()
         {
-            _context.Categories.AddRange(SeedData.GetCategories());
-            _context.Ingredients.AddRange(SeedData.GetIngredient());
-            _context.Recipes.Add(new Recipe { Name = "Test2", Category_Id = 2, Description = "Test", Id = 1, Img_Url = "AA" });
+            _context.Categories.AddRange(CategoryData.GetCategories());
+            _context.Ingredients.AddRange(IngredientData.GetIngredients());
+            _context.Recipes.AddRange(RecipeData.GetRecipes());
+            _context.RecipeIngredients.AddRange(RecipeIngredientsData.GetRecipesIngredients());
             _context.SaveChanges();
         }
 
