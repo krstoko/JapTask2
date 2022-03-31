@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using backend.Core.Common;
-using backend.Data;
 using backend.Dtos.Category;
 using backend.Dtos.Ingredient;
 using backend.Dtos.Recipe;
@@ -8,17 +7,15 @@ using backend.Dtos.RecipeIngredients;
 using backend.Dtos.Requests;
 using backend.Infrastructure.DataContext;
 using backend.Models;
-using backend.Services.IngredientService;
 using backend.Services.RecipeService;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Moq;
 using Normative_Calculator.Database.SeedData;
+using NormativeCalculator.Test;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Normative_Calculator.Service.Test
@@ -49,7 +46,7 @@ namespace Normative_Calculator.Service.Test
                 x.CreateMap<Category, GetCategoryDto>();
             });
             _recipeService = new RecipeService(mapperConfiguration.CreateMapper(), _context);
-            SetUpDatabase();
+            SeedInMemoryDataBase.SeedingDataBase(_context);
         }
 
         [Test]
@@ -59,7 +56,7 @@ namespace Normative_Calculator.Service.Test
             var recipe = new AddRecipeDto
             {
                 Name = "Test",
-                Category_Id = 5,
+                Category_Id = 1,
                 Description = "Test",
                 Img_Url = "Test",
                 Recipe_Ingredients = new List<AddRecipeIngredientsDto>()
@@ -94,7 +91,6 @@ namespace Normative_Calculator.Service.Test
             Assert.AreEqual(addingRecipe.Name, recipeInDb.Name);
             Assert.AreEqual(addingRecipe.Description, recipeInDb.Description);
             Assert.AreEqual(addingRecipe.Img_Url, recipeInDb.Img_Url);
-            Assert.True(addingRecipe.Recipe_Ingredients.Any());
         }
 
         [Test]
@@ -125,39 +121,6 @@ namespace Normative_Calculator.Service.Test
         }
 
         [Test]
-        public void CreateRecipe_AddingThreeSameIngredients_ThrowException()
-        {
-            var newRecipe = new AddRecipeDto
-            {
-                Name = "Test",
-                Description = "Test",
-                Category_Id = 2,
-                Recipe_Ingredients = new List<AddRecipeIngredientsDto>
-                {
-                    new AddRecipeIngredientsDto
-                   {
-                       Ingredient_Id = 1,
-                       Recipe_Measure_Quantity = 1,
-                       Recipe_Measure_Unit = MeasureUnit.Kilogram,
-                   },
-                     new AddRecipeIngredientsDto
-                   {
-                       Ingredient_Id = 1,
-                       Recipe_Measure_Quantity = 1,
-                       Recipe_Measure_Unit = MeasureUnit.Kilogram,
-                   },
-                     new AddRecipeIngredientsDto
-                   {
-                       Ingredient_Id = 1,
-                       Recipe_Measure_Quantity = 1,
-                       Recipe_Measure_Unit = MeasureUnit.Kilogram,
-                   }
-                }
-            };
-            Assert.ThrowsAsync<ArgumentException>(async () => await _recipeService.AddRecipe(newRecipe));
-        }
-
-        [Test]
         public void CreateRecipe_AddingMultipleSameIngredients_ThrowException()
         {
             var newRecipe = new AddRecipeDto
@@ -168,12 +131,6 @@ namespace Normative_Calculator.Service.Test
                 Recipe_Ingredients = new List<AddRecipeIngredientsDto>
                 {
                     new AddRecipeIngredientsDto
-                   {
-                       Ingredient_Id = 1,
-                       Recipe_Measure_Quantity = 1,
-                       Recipe_Measure_Unit = MeasureUnit.Kilogram,
-                   },
-                     new AddRecipeIngredientsDto
                    {
                        Ingredient_Id = 1,
                        Recipe_Measure_Quantity = 1,
@@ -212,15 +169,5 @@ namespace Normative_Calculator.Service.Test
             var result = await _recipeService.Get(loadMoreRequest);
             Assert.That(result.Data.Count, Is.EqualTo(p_size));
         }
-
-        public void SetUpDatabase()
-        {
-            _context.Categories.AddRange(CategoryData.GetCategories());
-            _context.Ingredients.AddRange(IngredientData.GetIngredients());
-            _context.Recipes.AddRange(RecipeData.GetRecipes());
-            _context.RecipeIngredients.AddRange(RecipeIngredientsData.GetRecipesIngredients());
-            _context.SaveChanges();
-        }
-
     }
 }

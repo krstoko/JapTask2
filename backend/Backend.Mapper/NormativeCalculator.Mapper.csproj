@@ -9,9 +9,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Backend.Core\Normative_Calculator.Core.csproj" />
-		<ProjectReference Include="..\Backend.Database\Normative_Calculator.Database.csproj" />
-		<ProjectReference Include="..\Backend.Service\Normative_Calculator.Service.csproj" />
+		<ProjectReference Include="..\Backend.Core\NormativeCalculator.Core.csproj" />
+		<ProjectReference Include="..\Backend.Database\NormativeCalculator.Database.csproj" />
+		<ProjectReference Include="..\Backend.Service\NormativeCalculator.Service.csproj" />
 	</ItemGroup>
 
 

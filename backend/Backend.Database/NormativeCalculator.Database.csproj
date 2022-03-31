@@ -14,7 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Backend.Core\Normative_Calculator.Core.csproj" />
+		<ProjectReference Include="..\Backend.Core\NormativeCalculator.Core.csproj" />
 	</ItemGroup>
 
 		</Project>

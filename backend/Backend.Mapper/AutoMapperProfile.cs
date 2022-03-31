@@ -18,13 +18,13 @@ namespace backend.Mapper
         {
             CreateMap<Category, GetCategoryDto>();
             CreateMap<Recipe, GetRecipeDto>()
-                .ForMember(x => x.Price, opt => opt.MapFrom((recipe, recipeDto) => recipeDto.Recipes_Ingredients.Sum(ri => ri.Real_Ingredient_Price)));
+                .ForMember(x => x.Price, opt => opt.MapFrom((recipe, recipeDto) => recipeDto.Recipes_Ingredients.Sum(ri => ri.RealIngredientPrice)));
 
             CreateMap<AddRecipeDto, Recipe>();
             CreateMap<Ingredient, GetIngredientDto>();
             CreateMap<Ingredient, GetRecipeIngredientsDto>();
             CreateMap<RecipesIngredients, GetRecipeIngredientsDto>()
-                .ForMember(x => x.Real_Ingredient_Price, opt => opt.MapFrom(src => CalculatePrice.calculatingPrice(src)));
+                .ForMember(x => x.RealIngredientPrice, opt => opt.MapFrom(src => CalculatePrice.calculatingPrice(src)));
         }
 
 

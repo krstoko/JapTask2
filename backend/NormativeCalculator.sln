@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Normative_Calculator.Api", "backend\Normative_Calculator.Api.csproj", "{3ABE9D10-6D7A-4E11-98D3-E2B8783A327F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NormativeCalculator.Api", "backend\NormativeCalculator.Api.csproj", "{3ABE9D10-6D7A-4E11-98D3-E2B8783A327F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{AA5874FB-A5CB-4D7F-96F7-CB77FCF6638F}"
 EndProject
@@ -11,15 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{64938433-67EA-4499-9A9B-031B4EDBB685}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Normative_Calculator.Common", "Backend.Common\Normative_Calculator.Common.csproj", "{FD91BF05-9E22-4DA0-B86F-45FD7A89BCC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NormativeCalculator.Common", "Backend.Common\NormativeCalculator.Common.csproj", "{FD91BF05-9E22-4DA0-B86F-45FD7A89BCC5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Normative_Calculator.Core", "Backend.Core\Normative_Calculator.Core.csproj", "{4897ED6B-D674-4B0B-99CF-DA384877E4C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NormativeCalculator.Core", "Backend.Core\NormativeCalculator.Core.csproj", "{4897ED6B-D674-4B0B-99CF-DA384877E4C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Normative_Calculator.Database", "Backend.Database\Normative_Calculator.Database.csproj", "{D5E01F03-37D2-43A6-AF48-1BA5B9A2381E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NormativeCalculator.Database", "Backend.Database\NormativeCalculator.Database.csproj", "{D5E01F03-37D2-43A6-AF48-1BA5B9A2381E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Normative_Calculator.Mapper", "Backend.Mapper\Normative_Calculator.Mapper.csproj", "{56BCA0EE-4C3E-4D3C-9CC6-B2F6C03636E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NormativeCalculator.Mapper", "Backend.Mapper\NormativeCalculator.Mapper.csproj", "{56BCA0EE-4C3E-4D3C-9CC6-B2F6C03636E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Normative_Calculator.Service", "Backend.Service\Normative_Calculator.Service.csproj", "{66104D71-5B97-46D6-9448-BBCC212A78EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NormativeCalculator.Service", "Backend.Service\NormativeCalculator.Service.csproj", "{66104D71-5B97-46D6-9448-BBCC212A78EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NormativeCalculator.Test", "NormativeCalculator.Test\NormativeCalculator.Test.csproj", "{5EEAC5C5-E250-495F-9552-0880F15B1C80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{66104D71-5B97-46D6-9448-BBCC212A78EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66104D71-5B97-46D6-9448-BBCC212A78EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66104D71-5B97-46D6-9448-BBCC212A78EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EEAC5C5-E250-495F-9552-0880F15B1C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EEAC5C5-E250-495F-9552-0880F15B1C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EEAC5C5-E250-495F-9552-0880F15B1C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EEAC5C5-E250-495F-9552-0880F15B1C80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{D5E01F03-37D2-43A6-AF48-1BA5B9A2381E} = {D6B64E9F-E61B-48C8-A792-93CC87F25C77}
 		{56BCA0EE-4C3E-4D3C-9CC6-B2F6C03636E0} = {D6B64E9F-E61B-48C8-A792-93CC87F25C77}
 		{66104D71-5B97-46D6-9448-BBCC212A78EC} = {AA5874FB-A5CB-4D7F-96F7-CB77FCF6638F}
+		{5EEAC5C5-E250-495F-9552-0880F15B1C80} = {AA5874FB-A5CB-4D7F-96F7-CB77FCF6638F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A9E76AC-FB3D-4CBC-9F26-E774A7D1225E}

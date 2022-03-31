@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Backend.Common\Normative_Calculator.Common.csproj" />
+		<ProjectReference Include="..\Backend.Common\NormativeCalculator.Common.csproj" />
 	</ItemGroup>
 
 

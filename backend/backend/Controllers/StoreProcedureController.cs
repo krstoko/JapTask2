@@ -17,19 +17,19 @@ namespace Normative_Calculator.Api.Controllers
             _storedProcedureService = storedProcedureService;
         }
 
-        [HttpGet("procedure/1")]
+        [HttpGet("RecipesWithMoreThen10Ingredients")]
         public async Task<IActionResult> GetRecipesWith10orMoreIngredients()
         {
             return Ok(await _storedProcedureService.GetRecipesWith10orMoreIngredients());
         }
 
-        [HttpGet("procedure/2")]
+        [HttpGet("RecipesByCategoryName")]
         public async Task<IActionResult> GetRecipesByCategoryName()
         {
             return Ok(await _storedProcedureService.GetRecipesByCategoryName());
         }
 
-        [HttpGet("procedure/3")]
+        [HttpGet("MostUsedIngredients")]
         public async Task<IActionResult> GetTop10UsedIngredients([FromQuery] TopTenIngredients parameters)
         {
             return Ok(await _storedProcedureService.GetTop10UsedIngredients(parameters));

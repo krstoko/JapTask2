@@ -11,6 +11,6 @@ namespace backend.Dtos.RecipeIngredients
         public GetIngredientDto Ingredient { get; set; }
         public int Recipe_Measure_Quantity { get; set; }
         public MeasureUnit Recipe_Measure_Unit { get; set; }
-        public double Real_Ingredient_Price { get; set; }
+        public double RealIngredientPrice { get; set; }
     }
 }
