@@ -8,6 +8,7 @@ using backend.Dtos.Requests;
 using backend.Infrastructure.DataContext;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
+using NormativeCalculator.Common.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,7 +69,7 @@ namespace backend.Services.RecipeService
             return response;
         }
 
-        public async Task<ServiceResponse<List<GetRecipeDto>>> Get(RecipeSearch recipeSearch)
+        public PagedList<GetRecipeDto> Get(RecipeSearch recipeSearch)
         {
             var response = new ServiceResponse<List<GetRecipeDto>>();
 
@@ -91,24 +92,13 @@ namespace backend.Services.RecipeService
                     r.Recipes_Ingredients.Any(ri => ri.Ingredient.Name.Contains(recipeSearch.SearchValue)));
             }
 
-            var recipes = await query
+            var recipes = query
                 .Select(r => _mapper.Map<GetRecipeDto>(r))
-                .ToListAsync();
-
-            if (recipes.Count <= recipeSearch.Skip + recipeSearch.PageSize)
-            {
-                response.LoadMore = false;
-                response.Message = "Cant load more";
-            }
-
-            response.Data = recipes
                 .OrderBy(r => r.Price)
-                .Skip((int)recipeSearch.Skip)
-                .Take((int)recipeSearch.PageSize)
                 .ToList();
 
-            response.TotalDataNumber = recipes.Count;
-            return response;
+            return PagedList<GetRecipeDto>.Create(recipes, (int)recipeSearch.PageSize, (int)recipeSearch.Skip);
+
         }
 
         public async Task<ServiceResponse<GetRecipeDto>> GetRecipe(int id)

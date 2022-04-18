@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using backend.Core.Common;
-using backend.Data;
 using backend.Dtos.Ingredient;
 using backend.Infrastructure.DataContext;
-using backend.Models;
-using backend.Services.IngredientService;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
